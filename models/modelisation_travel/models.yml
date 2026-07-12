@@ -1,0 +1,101 @@
+models:
+
+  - name: dim_corpo_employee
+    description: Table d'identification des clients
+    columns:
+      - name: user_id
+        data_tests:
+          - unique
+          - not_null
+      - name: first_name
+      - name: last_name
+      - name: email
+      - name: phone_number
+      - name: organisation_id
+      - name: organisation_name
+      - name: pricing_plan
+      - name: subscribed_at
+
+  - name: fact_corpo_subscription_income
+    columns:
+      - name: month
+        data_tests:
+          - unique
+          - not_null
+      - name: income
+      - name: oganisation_id
+        data_tests:
+          - unique
+          - not_null
+      - name: organisation_name
+      - name: pricing_plan
+
+  - name: fact_travel_car_booking
+    columns:
+      - name: booking_reference
+        data_tests:
+          - unique
+          - not_null
+      - name: booked_at
+      - name: end_date
+      - name: booking_status
+      - name: booking_price
+      - name: start_date
+      - name: commission_percentage
+      - name: organisation_id
+      - name: organisation_name
+      - name: user_id
+        data_tests:
+          - unique
+          - not_null
+      - name: car_rental_company_id
+      - name: car_rental_company_name
+      - name: car_model_name
+      - name: payment_done_at
+
+  - name: fact_travel_hotel_booking
+    columns:
+      - name: booking_reference
+        data_tests:
+          - unique
+          - not_null
+      - name: booked_at
+      - name: end_date
+      - name: booking_status
+      - name: booking_price
+      - name: start_date
+      - name: commission_percentage
+      - name: organisation_id
+      - name: organisation_name
+      - name: user_id
+        data_tests:
+          - unique
+          - not_null
+      - name: hotel_id
+      - name: hotel_name
+      - name: hotel_room_id
+      - name: payment_done_at
+      
+  - name: fact_travel_income
+    columns:
+      - name: day
+        data_tests:
+          - unique
+          - not_null
+      - name: product_type
+        data_tests:
+          - unique
+          - not_null
+      - name: income
+      - name: organisation_id
+        data_tests:
+          - unique
+          - not_null
+      - name: organisation_name
+
+  - name: fact_income_monthly
+    description: Table des revenus par type et par mois
+    columns:
+      - name: month
+      - name: product_type
+      - name: income
