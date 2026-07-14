@@ -1,0 +1,116 @@
+sources:
+  - name: modelisation_sources
+    database: carteldeladata
+    schema: modelisation_sources  
+    tables:
+
+      - name: car_hires
+#        data_tests:
+#          - dbt_utils.unique_combination_of_columns:
+#              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+#                combination_of_columns:
+#                  - id
+#                  - user_id
+#                  - booking_reference
+        columns:
+          - name: id
+          - name: booking_reference
+          - name: start_date
+          - name: end_date
+          - name: booked_at
+          - name: organisation_id
+          - name: organisation_name
+          - name: main_driver_ids
+          - name: car_rental_company_id
+          - name: car_model_name
+          - name: price
+          - name: commission_percentage
+          - name: booking_status
+          - name: booking_validated_at
+          - name: payment_done_at
+
+      - name: car_rental_companies
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+          - name: name
+          - name: street_name
+          - name: city
+          - name: zipcode
+
+      - name: hotels
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+          - name: name
+          - name: street
+          - name: city
+          - name: zipcode
+          - name: commission_percentage
+
+      - name: rooms
+#        data_tests:
+#          - dbt_utils.unique_combination_of_columns:
+#              arguments:
+#                combination_of_columns:
+#                  - id
+#                  - user_id
+#                  - booking_reference
+        columns:
+          - name: id
+          - name: user_id
+          - name: booking_reference
+          - name: start_date  
+          - name: end_date  
+          - name: booked_at 
+          - name: organisation_id 
+          - name: organisation_name 
+          - name: hotel_id  
+          - name: room_id 
+          - name: room_fee  
+          - name: booking_status  
+          - name: booking_validated_at  
+          - name: payment_done_at  
+
+      - name: teams
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+          - name: name
+          - name: organisation_id
+
+      - name: users
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+          - name: organisation_id
+          - name: first_name
+          - name: last_name
+          - name: phone_number
+          - name: email
+
+      - name: organisations
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+          - name: organisation_name
+          - name: pricing_plan
+          - name: street
+          - name: city
+          - name: zipcode
+          - name: price_per_month
+          - name: subscribed_at
+
+      - name: calendrier_months
+        columns:
+          - name: month
