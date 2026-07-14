@@ -17,25 +17,28 @@ models:
       - name: subscribed_at
 
   - name: fact_corpo_subscription_income
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            combination_of_columns:
+              - month
+              - organisation_id
     columns:
       - name: month
-        data_tests:
-          - unique
-          - not_null
       - name: income
       - name: oganisation_id
-        data_tests:
-          - unique
-          - not_null
       - name: organisation_name
       - name: pricing_plan
 
   - name: fact_travel_car_booking
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            combination_of_columns:
+              - booking_reference
+              - user_id
     columns:
       - name: booking_reference
-        data_tests:
-          - unique
-          - not_null
       - name: booked_at
       - name: end_date
       - name: booking_status
@@ -45,20 +48,20 @@ models:
       - name: organisation_id
       - name: organisation_name
       - name: user_id
-        data_tests:
-          - unique
-          - not_null
       - name: car_rental_company_id
       - name: car_rental_company_name
       - name: car_model_name
       - name: payment_done_at
 
   - name: fact_travel_hotel_booking
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            combination_of_columns:
+              - booking_reference
+              - user_id
     columns:
       - name: booking_reference
-        data_tests:
-          - unique
-          - not_null
       - name: booked_at
       - name: end_date
       - name: booking_status
@@ -68,29 +71,24 @@ models:
       - name: organisation_id
       - name: organisation_name
       - name: user_id
-        data_tests:
-          - unique
-          - not_null
       - name: hotel_id
       - name: hotel_name
       - name: hotel_room_id
       - name: payment_done_at
       
   - name: fact_travel_income
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            combination_of_columns:
+              - day
+              - product_type
+              - organisation_id
     columns:
       - name: day
-        data_tests:
-          - unique
-          - not_null
       - name: product_type
-        data_tests:
-          - unique
-          - not_null
       - name: income
       - name: organisation_id
-        data_tests:
-          - unique
-          - not_null
       - name: organisation_name
 
   - name: fact_income_monthly
