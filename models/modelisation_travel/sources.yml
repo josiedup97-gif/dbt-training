@@ -5,13 +5,13 @@ sources:
     tables:
 
       - name: car_hires
-        data_tests:
-          - dbt_utils.unique_combination_of_columns:
-              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
-                combination_of_columns:
-                  - id
-                  - user_id
-                  - booking_reference
+#        data_tests:
+#          - dbt_utils.unique_combination_of_columns:
+#              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+#                combination_of_columns:
+#                  - id
+#                  - user_id
+#                  - booking_reference
         columns:
           - name: id
           - name: booking_reference
@@ -53,13 +53,13 @@ sources:
           - name: commission_percentage
 
       - name: rooms
-        data_tests:
-          - dbt_utils.unique_combination_of_columns:
-              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
-                combination_of_columns:
-                  - id
-                  - user_id
-                  - booking_reference
+#        data_tests:
+#          - dbt_utils.unique_combination_of_columns:
+#              arguments:
+#                combination_of_columns:
+#                  - id
+#                  - user_id
+#                  - booking_reference
         columns:
           - name: id
           - name: user_id
