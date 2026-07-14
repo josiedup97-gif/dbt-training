@@ -53,19 +53,17 @@ sources:
           - name: commission_percentage
 
       - name: rooms
+        data_tests:
+          - dbt_utils.unique_combination_of_columns:
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                combination_of_columns:
+                  - id
+                  - user_id
+                  - booking_reference
         columns:
           - name: id
-            data_tests:
-              - unique
-              - not_null
           - name: user_id
-            data_tests:
-              - unique
-              - not_null
           - name: booking_reference
-            data_tests:
-              - unique
-              - not_null
           - name: start_date  
           - name: end_date  
           - name: booked_at 
